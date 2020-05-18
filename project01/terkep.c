@@ -19,10 +19,10 @@ Terkep CreateTK(int n,int m){
 void ReadTK(Terkep* terkep,int lvl){
     const char* file;
     if(lvl==0){
-        file="terkep01.be";
+        file="terkep01.be"; ///elso palya
     }
     else{
-        file="terkep.be";
+        file="terkep.be"; ///masodik palya
     }
     FILE* fin=fopen(file, "rt");
     if(!fin){
@@ -36,17 +36,18 @@ void ReadTK(Terkep* terkep,int lvl){
     for(i=0;i<terkep->hossz;++i){
         for(j=0;j<=terkep->magas;++j){
             fscanf(fin,"%c",&terkep->ertek[i][j]);
-        }
+        }///palya beolvasas
     }
     fclose(fin);
 }
 void Kirajzol(Terkep terkep,int episode){
     int terulet=0;
     int stop=0;
-    if(episode<=25){
+    if(episode<=30){ ///elso palya
     ReadTK(&terkep,0);
     int i,j;
     printf("Level 1.\n\n");
+    printf("Jelmagyarazat:\nhatar: .\nelfoglalt terulet: o\n\n\n");
     for(i=0;i<terkep.hossz;++i) //sor
     {
         for(j=0;j<terkep.magas;++j){ //oszlop
@@ -54,14 +55,14 @@ void Kirajzol(Terkep terkep,int episode){
                 printf(". ");
                 }
                 else
-                if(terkep.ertek[i][j]=='2'){ ///belso terulet
+                if(terkep.ertek[i][j]=='2'){ ///belso zona
                   terulet++;
                     if(stop<episode){
-                        printf(". ");
+                        printf("o "); ///elfoglalt terulet
                         stop++;
                     }
                     else
-                        printf("  ");
+                        printf("  "); ///el nem foglalt terulet
                 }
                 else
                 if(terkep.ertek[i][j]=='0'){ ///feher zona
@@ -71,10 +72,11 @@ void Kirajzol(Terkep terkep,int episode){
         printf("\n");
         }
     }
-    else{
+    else{ ///masodik palya
     ReadTK(&terkep,1);
     int i,j;
     printf("Level 2.\n\n");
+    printf("Jelmagyarazat:\nhatar: .\nelfoglalt terulet: o\n\n\n");
     for(i=0;i<terkep.hossz;++i) //sor
     {
         for(j=0;j<terkep.magas;++j){ //oszlop
@@ -85,11 +87,11 @@ void Kirajzol(Terkep terkep,int episode){
                 if(terkep.ertek[i][j]=='2'){ ///belso terulet
                   terulet++;
                     if(stop<episode){
-                        printf(". ");
+                        printf("o "); ///elfoglalt terulet
                         stop++;
                     }
                     else
-                        printf("  ");
+                        printf("  "); ///el nem foglalt terulet
                 }
                 else
                 if(terkep.ertek[i][j]=='0'){ ///feher zona
@@ -104,7 +106,7 @@ void Kirajzol(Terkep terkep,int episode){
 void Play(Terkep t){
     srand(time(0));
     KERDES* k;
-    int n=17;
+    int n=50; ///kerdesek szama
     k=(KERDES*)malloc(n*sizeof(KERDES));
     int j;
     for(j=0;j<n;j++){
@@ -115,21 +117,24 @@ void Play(Terkep t){
     int i;
     while(1){
         srand(time(0));
-        i=(rand()%17-1+1)+1;
+        i=(rand()%49); ///random kerdesek
         Kirajzol(t,episode);
+        printf("\n\n");
+        printf("(nagy betuket hasznalj)");
+        printf("\n\n");
         printf("\nKerdes: \n");
         printf("%s\n\n",k[i].kerdes);
         printf("%s\n",k[i].valaszok);
 
-    //printf("%i ", t.lvl);
         char option = getch();
+
     if(option==k[i].helyesek){///helyes
-        episode+=5;
+        episode+=5; ///terulet foglalas
     }
     else{ ///hibas
-        episode-=5;
+        episode-=5; ///terulet vesztes
     }
-    Sleep(1000);
+    Sleep(800);
     system("CLS");
     }
 }

@@ -12,13 +12,12 @@ KERDES createKerdes(){
 
 void ReadKerdes(char* filename,KERDES* k){
     FILE* fin=fopen(filename, "rt");
-    if(!fin)
-    {
+    if(!fin){
         printf("!!");
         exit(1);
     }
     int n;
-    fscanf(fin,"%i",&n);
+    fscanf(fin,"%i",&n); ///kerdesek szama
     char ent,corr;
     char* quest=malloc(80*sizeof(char));
     char* answ=malloc(80*sizeof(char));
@@ -29,12 +28,6 @@ void ReadKerdes(char* filename,KERDES* k){
         fscanf(fin,"%[^\n]\n%[^\n]\n%c%c",quest,answ,&corr,&ent);
         strcpy(k[i].kerdes,quest);
         strcpy(k[i].valaszok,answ);
-        k[i].helyesek=corr;
-        //printf("%s\n",k[i].kerdes);
-        //printf("%s\n",k[i].valaszok);
-        //printf("%c\n\n",k[i].helyesek);
+        k[i].helyesek=corr; ///kerdes-valasz-helyes valasz beolvasasa
     }
-        //printf("%s\n",k[1].kerdes);
-        //printf("%s\n",k[1].valaszok);
-        //printf("%c\n\n",k[1].helyesek);
 }

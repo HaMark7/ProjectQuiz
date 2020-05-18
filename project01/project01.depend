@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1589832293 source:d:\hmr\sapientia\project01\main.c
+	<stdio.h>
+	<stdlib.h>
+	"terkep.h"
+	"kerdes.h"
+	<time.h>
+
+1589834477 d:\hmr\sapientia\project01\terkep.h
+	"kerdes.h"
+
+1589835816 source:d:\hmr\sapientia\project01\terkep.c
+	<stdio.h>
+	"terkep.h"
+	"kerdes.h"
+	<windows.h>
+	<time.h>
+
+1589733278 d:\hmr\sapientia\project01\kerdes.h
+	<string.h>
+
+1589829816 source:d:\hmr\sapientia\project01\kerdes.c
+	<stdio.h>
+	"kerdes.h"
+	<string.h>
+
+1589725788 source:d:\hmr\sapientia\project01\kerdesek.c
+	"kerdesek.h"
+	<stdio.h>
+
+1589725788 d:\hmr\sapientia\project01\kerdesek.h
+	"kerdes.h"
+

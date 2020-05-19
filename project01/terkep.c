@@ -55,7 +55,7 @@ void Kirajzol(Terkep terkep,int episode){
                 printf(". ");
                 }
                 else
-                if(terkep.ertek[i][j]=='2'){ ///belso zona
+                i   f(terkep.ertek[i][j]=='2'){ ///belso zona
                   terulet++;
                     if(stop<episode){
                         printf("o "); ///elfoglalt terulet
@@ -133,6 +133,9 @@ void Play(Terkep t){
     }
     else{ ///hibas
         episode-=5; ///terulet vesztes
+    }
+    if(episode>105){
+        exit(1);
     }
     Sleep(800);
     system("CLS");
